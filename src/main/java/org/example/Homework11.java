@@ -1,11 +1,14 @@
 package org.example;
 
+import lombok.Data;
+
 import java.util.*;
 
+@Data
 public class Homework11 {
 
     public Integer maxDuplicate(List<Integer> nums) {
-        List<Integer> uniqueNumbers = new ArrayList<>();
+        Set<Integer> uniqueNumbers = new HashSet<>();
         List<Integer> duplicates = new ArrayList<>();
         for (Integer num : nums) {
             if (uniqueNumbers.contains(num)) {
@@ -22,7 +25,7 @@ public class Homework11 {
 
     public List<String> wordNumeration(List<String> words) {
         List<String> numberedWords = new ArrayList<>();
-        HashMap wordCounts = new HashMap<>();
+        Map<String, Integer> wordCounts = new HashMap<>();
         for (String word : words) {
             String wordWord = word.toLowerCase();
             int count = (int) wordCounts.getOrDefault(wordWord, 0) + 1;

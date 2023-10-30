@@ -2,9 +2,9 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class Homework11Test {
@@ -19,6 +19,13 @@ public class Homework11Test {
     }
 
     @Test
+    void testDuplicatesWithEmptyList() {
+        List<Integer> emptyList = List.of(1, 2, 3);
+        int result = homework11.maxDuplicate(emptyList);
+        assertNull(null, String.valueOf(result));
+    }
+
+    @Test
     void testWordNumeration() {
         List<String> words = List.of("Hi", "hi", "welcome", "no", "hI", "HI");
         List<String> expectedResult = List.of("Hi#1", "hi#2", "welcome#1", "no#1", "hI#3", "HI#4");
@@ -26,11 +33,23 @@ public class Homework11Test {
         assertEquals(expectedResult, actualResult);
     }
 
+
     @Test
-    void testMakeBricks() {
+    void testMakeBricksNotEnoughSmallBricks() {
+        boolean brickResult = homework11.makeBricks(3, 1, 9);
+        assertEquals(false, brickResult);
+    }
+
+    @Test
+    void testMakeBricksWithNotEnoughBigBricks() {
         boolean bricksResult = homework11.makeBricks(3, 2, 10);
         assertEquals(true, bricksResult);
+    }
 
+    @Test
+    void testMakeBricksWithNotEnoughBricks() {
+        boolean bricksResult = homework11.makeBricks(3, 1, 8);
+        assertEquals(true, bricksResult);
     }
 }
 
